@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-PL-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 </head>
@@ -32,7 +33,10 @@
 
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     @if (Auth::user()->hasRole(['admin']))
-                        <a class="dropdown-item">Panel administratora</a>
+                        <a href="{{ route('admin.index') }}" class="dropdown-item">Admin panel</a>
+                    @endif
+                    @if (Auth::user()->hasRole(['worker']))
+                        <a href="{{ route('worker.index') }}" class="dropdown-item">Worker panel</a>
                     @endif
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
