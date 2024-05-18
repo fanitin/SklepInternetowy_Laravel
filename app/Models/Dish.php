@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Dish extends Model
 {
     use HasFactory;
+
+
+    public function category(){
+        return $this->belongsTo(DishCategory::class, 'dish_category_id');
+    }
 }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('price');
+            $table->unsignedBigInteger('price');
             $table->unsignedBigInteger('weight')->nullable();
             $table->boolean('is_active')->default(true);
 
