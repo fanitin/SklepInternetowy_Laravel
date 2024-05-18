@@ -26,11 +26,22 @@ Route::middleware(WorkerPanelMiddleware::class)->namespace("App\Http\Controllers
         Route::get('/','IndexController')->name('index');
         Route::post('/search', 'SearchController')->name('search');
         Route::post('/sort', 'SortController')->name('sort');
+        Route::delete('/{dish_category}/delete', 'DeleteController')->name('destroy');
+        Route::get('/add', 'StoreController@addSender')->name('add');
+        Route::post('/store', 'StoreController@store')->name('store');
+        Route::get('/{dish_category}/edit', 'EditController@sender')->name('send');
+        Route::patch('/{dish_category}', 'EditController@edit')->name('edit');
     });
 
     Route::namespace('Dish')->prefix('dish')->name('dish.')->group(function () {
         Route::get('/','IndexController')->name('index');
         Route::post('/search', 'SearchController')->name('search');
         Route::post('/sort', 'SortController')->name('sort');
+        Route::delete('/{dish}/delete', 'DeleteController')->name('destroy');
+        Route::get('/{dish}/show', 'ShowController')->name('show');
+        Route::get('/add', 'StoreController@addSender')->name('add');
+        Route::post('/store', 'StoreController@store')->name('store');
+        Route::get('/{dish}/edit', 'EditController@sender')->name('send');
+        Route::patch('/{dish}/show', 'EditController@edit')->name('edit');
     });
 });

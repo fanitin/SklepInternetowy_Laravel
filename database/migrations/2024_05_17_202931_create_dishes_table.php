@@ -21,7 +21,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('dish_category_id')->nullable();
 
-            $table->foreign('dish_category_id')->references('id')->on('dish_categories');
+            $table->foreign('dish_category_id')->references('id')->on('dish_categories')->onDelete('set null');
 
             $table->string('image')->nullable();
             $table->string('dish_ingridients')->nullable();

@@ -24,13 +24,14 @@
     <button type="submit">Sortuj</button>
 </form>
 
-
+<a href="{{route('worker.category.add')}}" class="btn btn-primary btn-as-link m-2">Dodaj nową kategorię</a>
 <table id="categoriesTable" class="table table-dark border border-light">
     <thead>
         <tr>
             <th>ID</th>
             <th>Nazwa</th>
             <th>Data utworzenia</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -39,6 +40,14 @@
                 <td>{{$category->id}}</td>
                 <td>{{$category->name}}</td>
                 <td>{{$category->created_at}}</td>
+                <td><form action="{{route('worker.category.destroy', $category->id)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" class="btn btn-danger" value="Usuń">
+                </form></td>
+                <td>
+                    <button class="btn btn-warning"><a class="text-white" href="{{route('worker.category.send', $category->id)}}">Edytuj</a></button>
+                </td>
             </tr>
         @endforeach
     </tbody>
@@ -66,6 +75,16 @@
                                 <td>${category.id}</td>
                                 <td>${category.name}</td>
                                 <td>${category.created_at}</td>
+                                <td>
+                                    <form method="POST" action="/worker/category/${category.id}/delete">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="${$('meta[name="csrf-token"]').attr('content')}">
+                                        <button type="submit" class="btn btn-danger">Usuń</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <button class="btn btn-warning"><a class="text-white" href="worker/category/${category.id}/edit">Edytuj</a></button>
+                                </td>
                             </tr>
                         `);
                     });
@@ -91,6 +110,16 @@
                                 <td>${category.id}</td>
                                 <td>${category.name}</td>
                                 <td>${category.created_at}</td>
+                                <td>
+                                    <form method="POST" action="/worker/category/${category.id}/delete">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="${$('meta[name="csrf-token"]').attr('content')}">
+                                        <button type="submit" class="btn btn-danger">Usuń</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <button class="btn btn-warning"><a class="text-white" href="worker/category/${category.id}/edit">Edytuj</a></button>
+                                </td>
                             </tr>
                         `);
                     });

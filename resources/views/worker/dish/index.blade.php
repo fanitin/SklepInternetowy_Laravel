@@ -28,7 +28,7 @@
     <button type="submit">Sortuj</button>
 </form>
 
-
+<a href="{{route('worker.dish.add')}}" class="btn btn-primary btn-as-link m-2">Dodaj nowe danie</a>
 <table id="dishesTable" class="table table-dark border border-light">
     <thead>
         <tr>
@@ -38,17 +38,32 @@
             <th>Is_active</th>
             <th>Categoria</th>
             <th>Data utworzenia</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach ($dishes as $dish)
             <tr>
                 <td>{{$dish->id}}</td>
-                <td>{{$dish->name}}</td>
+                <td><a href="{{route('worker.dish.show', $dish->id)}}">{{$dish->name}}</a></td>
                 <td>{{$dish->price}}</td>
-                <td>{{$dish->is_active}}</td>
-                <td>{{$dish->category->name}}</td>
+                <td class="@if ($dish->is_active == 1)bg-success
+                    @else bg-warning
+                    @endif
+                    ">{{$dish->is_active}}</td>
+                <td>
+                    @if ($dish->category != null)
+                    {{$dish->category->name}}
+                    @else NULL
+                    @endif</td>
                 <td>{{$dish->created_at}}</td>
+                <td>
+                    <form action="{{route('worker.dish.destroy', $dish->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" class="btn btn-danger" value="Usuń">
+                    </form>
+                </td>
             </tr>
         @endforeach
     </tbody>
@@ -70,14 +85,22 @@
                 success: function(response) {
                     $('#dishesTable tbody').empty();
                     response.forEach(function(dish) {
+                        var rowClass = dish.is_active == 1 ? 'bg-success' : 'bg-warning';
                         $('#dishesTable tbody').append(`
                         <tr>
                             <td>${dish.id}</td>
-                            <td>${dish.name}</td>
+                            <td><a href="/worker/dish/${dish.id}/show">${dish.name}</a></td>
                             <td>${dish.price}</td>
-                            <td>${dish.is_active}</td>
+                            <td  class="${rowClass}">${dish.is_active}</td>
                             <td>${dish.category}</td>
                             <td>${dish.created_at}</td>
+                            <td>
+                                <form method="POST" action="/worker/dish/${dish.id}/delete">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="${$('meta[name="csrf-token"]').attr('content')}">
+                                    <button type="submit" class="btn btn-danger">Usuń</button>
+                                </form>
+                            </td>
                         </tr>
                         `);
                     });
@@ -98,14 +121,22 @@
                 success: function(response) {
                     $('#dishesTable tbody').empty();
                     response.forEach(function(dish) {
+                        var rowClass = dish.is_active == 1 ? 'bg-success' : 'bg-warning';
                         $('#dishesTable tbody').append(`
                         <tr>
                             <td>${dish.id}</td>
-                            <td>${dish.name}</td>
+                            <td><a href="/worker/dish/${dish.id}/show">${dish.name}</a></td>
                             <td>${dish.price}</td>
-                            <td>${dish.is_active}</td>
+                            <td  class="${rowClass}">${dish.is_active}</td>
                             <td>${dish.category}</td>
                             <td>${dish.created_at}</td>
+                            <td>
+                                <form method="POST" action="/worker/dish/${dish.id}/delete">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="${$('meta[name="csrf-token"]').attr('content')}">
+                                    <button type="submit" class="btn btn-danger">Usuń</button>
+                                </form>
+                            </td>
                         </tr>
                         `);
                     });
