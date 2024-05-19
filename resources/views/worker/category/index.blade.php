@@ -1,4 +1,9 @@
 @extends('layouts.worker')
+
+@section('upper_title')
+    Kategorie
+@endsection
+
 @section('main_content')
 <form id="searchForm" method="POST" action="{{ route('worker.category.search') }}">
     @csrf
@@ -70,11 +75,19 @@
                 success: function(response) {
                     $('#categoriesTable tbody').empty();
                     response.forEach(function(category) {
+                        let createdAt = new Date(category.created_at).toLocaleString('pl-PL', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit'
+                        });
                         $('#categoriesTable tbody').append(`
                             <tr>
                                 <td>${category.id}</td>
                                 <td>${category.name}</td>
-                                <td>${category.created_at}</td>
+                                <td>${createdAt}</td>
                                 <td>
                                     <form method="POST" action="/worker/category/${category.id}/delete">
                                         <input type="hidden" name="_method" value="DELETE">
@@ -105,11 +118,19 @@
                 success: function(response) {
                     $('#categoriesTable tbody').empty();
                     response.forEach(function(category) {
+                        let createdAt = new Date(category.created_at).toLocaleString('pl-PL', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit'
+                        });
                         $('#categoriesTable tbody').append(`
                             <tr>
                                 <td>${category.id}</td>
                                 <td>${category.name}</td>
-                                <td>${category.created_at}</td>
+                                <td>${createdAt}</td>
                                 <td>
                                     <form method="POST" action="/worker/category/${category.id}/delete">
                                         <input type="hidden" name="_method" value="DELETE">

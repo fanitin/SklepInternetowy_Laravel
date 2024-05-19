@@ -1,5 +1,9 @@
 @extends('layouts.worker')
 
+@section('upper_title')
+    Dodawanie kategorii
+@endsection
+
 @section('main_content')
 <div class="container mt-5">
     <form action="{{ route('worker.category.store') }}" method="POST">

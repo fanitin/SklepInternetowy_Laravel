@@ -1,11 +1,16 @@
 @extends('layouts.worker')
+
+@section('upper_title')
+    Dania
+@endsection
+
 @section('main_content')
 <form id="searchForm" method="POST" action="{{ route('worker.dish.search') }}">
     @csrf
     <input type="text" name="searchTerm" id="searchTerm" placeholder="Szukaj...">
     <select name="searchType" id="searchType">
-        <option value="id">ID</option>
-        <option value="name">Nazwa</option>
+        <option value="dishes.id">ID</option>
+        <option value="dishes.name">Nazwa</option>
         <option value="dish_categories.name">Kategoria</option>
     </select>
     <button type="submit">Szukaj</button>
@@ -14,12 +19,12 @@
 <form id="sortForm" method="POST" action="{{ route('worker.dish.sort') }}">
     @csrf
     <select name="sortColumn" id="sortColumn">
-        <option value="id">ID</option>
-        <option value="name">Nazwa</option>
-        <option value="price">Cena</option>
-        <option value="is_active">Dostepność</option>
+        <option value="dishes.id">ID</option>
+        <option value="dishes.name">Nazwa</option>
+        <option value="dishes.price">Cena</option>
+        <option value="dishes.is_active">Dostepność</option>
         <option value="dish_categories.name">Kategoria</option>
-        <option value="created_at">Data</option>
+        <option value="dishes.created_at">Data</option>
     </select>
     <select name="sortOrder" id="sortOrder">
         <option value="asc">Rosnąco</option>
@@ -45,7 +50,7 @@
         @foreach ($dishes as $dish)
             <tr>
                 <td>{{$dish->id}}</td>
-                <td><a href="{{route('worker.dish.show', $dish->id)}}">{{$dish->name}}</a></td>
+                <td><a href="{{route('worker.dish.show', $dish->id)}}" class="btn btn-primary btn-as-link">{{$dish->name}}</a></td>
                 <td>{{$dish->price}}</td>
                 <td class="@if ($dish->is_active == 1)bg-success
                     @else bg-warning
@@ -86,14 +91,22 @@
                     $('#dishesTable tbody').empty();
                     response.forEach(function(dish) {
                         var rowClass = dish.is_active == 1 ? 'bg-success' : 'bg-warning';
+                        let createdAt = new Date(dish.created_at).toLocaleString('pl-PL', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit'
+                        });
                         $('#dishesTable tbody').append(`
                         <tr>
                             <td>${dish.id}</td>
-                            <td><a href="/worker/dish/${dish.id}/show">${dish.name}</a></td>
+                            <td><a href="/worker/dish/${dish.id}/show" class="btn btn-primary btn-as-link">${dish.name}</a></td>
                             <td>${dish.price}</td>
                             <td  class="${rowClass}">${dish.is_active}</td>
                             <td>${dish.category}</td>
-                            <td>${dish.created_at}</td>
+                            <td>${createdAt}</td>
                             <td>
                                 <form method="POST" action="/worker/dish/${dish.id}/delete">
                                     <input type="hidden" name="_method" value="DELETE">
@@ -122,14 +135,22 @@
                     $('#dishesTable tbody').empty();
                     response.forEach(function(dish) {
                         var rowClass = dish.is_active == 1 ? 'bg-success' : 'bg-warning';
+                        let createdAt = new Date(dish.created_at).toLocaleString('pl-PL', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit'
+                        });
                         $('#dishesTable tbody').append(`
                         <tr>
                             <td>${dish.id}</td>
-                            <td><a href="/worker/dish/${dish.id}/show">${dish.name}</a></td>
+                            <td><a href="/worker/dish/${dish.id}/show" class="btn btn-primary btn-as-link">${dish.name}</a></td>
                             <td>${dish.price}</td>
                             <td  class="${rowClass}">${dish.is_active}</td>
                             <td>${dish.category}</td>
-                            <td>${dish.created_at}</td>
+                            <td>${createdAt}</td>
                             <td>
                                 <form method="POST" action="/worker/dish/${dish.id}/delete">
                                     <input type="hidden" name="_method" value="DELETE">

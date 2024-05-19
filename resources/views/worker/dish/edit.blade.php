@@ -1,5 +1,9 @@
 @extends('layouts.worker')
 
+@section('upper_title')
+    Zmiana dania #{{$dish->id}}
+@endsection
+
 @section('main_content')
 <div class="container mt-5">
     <form action="{{ route('worker.dish.edit', $dish->id) }}" method="POST" enctype="multipart/form-data">

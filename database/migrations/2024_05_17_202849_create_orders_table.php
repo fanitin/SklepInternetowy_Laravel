@@ -16,12 +16,13 @@ return new class extends Migration
             $table->timestamps();
             $table->string('address');
             $table->string('phone');
-            $table->string('status');
 
+            $table->unsignedBigInteger('status_id')->default(1);
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('payment_id')->nullable();
             $table->unsignedBigInteger('processed_by_user_id')->nullable();
 
+            $table->foreign('status_id')->references('id')->on('statuses');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('payment_id')->references('id')->on('payments');
             $table->foreign('processed_by_user_id')->references('id')->on('users');

@@ -1,5 +1,9 @@
 @extends('layouts.worker')
 
+@section('upper_title')
+    Zmiana kategorii #{{$dish_category->id}}
+@endsection
+
 @section('main_content')
 <div class="container mt-5">
     <form action="{{ route('worker.category.edit', $dish_category->id) }}" method="POST">
@@ -16,4 +20,25 @@
         </div>
     </form>
 </div>
+
+<table class="table table-dark border border-light">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nazwa</th>
+            <th>Cena</th>
+            <th>Data utworzenia</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($dishes as $dish)
+            <tr>
+                <td>{{$dish->id}}</td>
+                <td><a href="{{route('worker.dish.show', $dish->id)}}" class="btn btn-primary btn-as-link">{{$dish->name}}</a></td>
+                <td>{{$dish->price}}</td>
+                <td>{{$dish->created_at}}</td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
 @endsection

@@ -23,7 +23,8 @@ class DishFactory extends Factory
             'weight' => fake()->numberBetween(100, 800),
             'is_active' => fake()->boolean(),
             'dish_category_id' => DishCategory::get()->random()->id,
-            'dish_ingridients' => fake()->sentence()
+            'dish_ingridients' => fake()->sentence(),
+            'image' => fake()->imageUrl()
         ];
     }
 }

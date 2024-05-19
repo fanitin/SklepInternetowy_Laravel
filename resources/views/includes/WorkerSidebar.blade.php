@@ -13,7 +13,7 @@
           <img src="{{asset('adm/dist/img/workerlogo.png')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{$user->name}}</a>
+          <a href="{{route('worker.profile')}}" class="d-block">{{$user->name}}</a>
         </div>
       </div>
 
@@ -34,12 +34,12 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-header">EXAMPLES</li>
+          <li class="nav-header">Panele</li>
           <li class="nav-item">
             <a href="{{route('worker.category.index')}}" class="nav-link">
               <i class="nav-icon fa fa-sharp fa-solid fa-list"></i>
               <p>
-                Categories
+                Kategorie
                 <span class="badge badge-info right">{{$categoriesPanelCount}}</span>
               </p>
             </a>
@@ -48,16 +48,25 @@
             <a href="{{route('worker.dish.index')}}" class="nav-link">
               <i class="nav-icon fa fa-solid fa-pizza-slice"></i>
               <p>
-                Dishes
+                Dania
                 <span class="badge badge-info right">{{$dishesPanelCount}}</span>
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/" class="nav-link">
+            <a href="{{route('worker.order.index')}}" class="nav-link">
               <i class="nav-icon fa fa-regular fa-paper-plane"></i>
               <p>
-                Orders
+                Zamówienia
+                <span class="badge badge-info right">{{$ordersPanelCount}}</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('worker.payment.index')}}" class="nav-link">
+              <i class="nav-icon fa fa-solid fa-barcode"></i>
+              <p>
+                Płatności
                 <span class="badge badge-info right">{{$ordersPanelCount}}</span>
               </p>
             </a>

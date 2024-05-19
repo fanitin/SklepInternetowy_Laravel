@@ -1,5 +1,9 @@
 @extends('layouts.worker')
 
+@section('upper_title')
+    Danie #{{$dish->id}}
+@endsection
+
 @section('main_content')
     <div class="col" style="max-width: 360px; max-height: 360px;">
         <div class="card shadow-sm">

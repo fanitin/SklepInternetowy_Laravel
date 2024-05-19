@@ -21,6 +21,7 @@ Route::middleware(AdminPanelMiddleware::class)->namespace("App\Http\Controllers\
 
 Route::middleware(WorkerPanelMiddleware::class)->namespace("App\Http\Controllers\Worker")->prefix('worker')->name('worker.')->group(function () {
     Route::get('/home', 'IndexController')->name('index');
+    Route::get('/profile', 'ProfileController')->name('profile');
 
     Route::namespace('Category')->prefix('category')->name('category.')->group(function () {
         Route::get('/','IndexController')->name('index');
@@ -43,5 +44,21 @@ Route::middleware(WorkerPanelMiddleware::class)->namespace("App\Http\Controllers
         Route::post('/store', 'StoreController@store')->name('store');
         Route::get('/{dish}/edit', 'EditController@sender')->name('send');
         Route::patch('/{dish}/show', 'EditController@edit')->name('edit');
+    });
+
+
+    Route::namespace('Order')->prefix('order')->name('order.')->group(function () {
+        Route::get('/','IndexController')->name('index');
+        Route::post('/search', 'SearchController')->name('search');
+        Route::post('/sort', 'SortController')->name('sort');
+        Route::get('/{order}/show', 'ShowController@index')->name('show');
+        Route::patch('/{order}', 'ShowController@changeStatus')->name('changeStatus');
+    });
+
+
+    Route::namespace('Payment')->prefix('payment')->name('payment.')->group(function () {
+        Route::get('/','IndexController')->name('index');
+        Route::post('/search', 'SearchController')->name('search');
+        Route::post('/sort', 'SortController')->name('sort');
     });
 });

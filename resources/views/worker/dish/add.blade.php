@@ -1,5 +1,9 @@
 @extends('layouts.worker')
 
+@section('upper_title')
+    Dodawanie dania
+@endsection
+
 @section('main_content')
 <div class="container mt-5">
     <form action="{{ route('worker.dish.store') }}" method="POST" enctype="multipart/form-data">

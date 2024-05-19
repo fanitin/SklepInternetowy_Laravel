@@ -45,13 +45,10 @@ class Service{
     public function search($request){
         $searchType = $request->input('searchType');
         $searchTerm = $request->input('searchTerm');
-        if($searchType == 'dish_categories.name'){
-            $dishes = Dish::join('dish_categories', 'dishes.dish_category_id', '=', 'dish_categories.id')
-            ->where($searchType, 'like', '%' . $searchTerm . '%')->get(['dishes.*', 'dish_categories.name as category_name']);
-        }else{
-            $dishes = Dish::join('dish_categories', 'dishes.dish_category_id', '=', 'dish_categories.id')
-            ->where('dishes.'.$searchType, 'like', '%' . $searchTerm . '%')->get(['dishes.*', 'dish_categories.name as category_name']);
-        }
+
+        $dishes = Dish::join('dish_categories', 'dishes.dish_category_id', '=', 'dish_categories.id')
+        ->where($searchType, 'like', '%' . $searchTerm . '%')->get(['dishes.*', 'dish_categories.name as category_name']);
+
         $dishesWithCategoryName = $dishes->map(function($dish) {
             return [
                 'id' => $dish->id,
@@ -69,13 +66,10 @@ class Service{
     public function sort($request){
         $sortColumn = $request->input('sortColumn');
         $sortOrder = $request->input('sortOrder');
-        if($sortColumn == 'dish_categories.name'){
-            $dishes = Dish::join('dish_categories', 'dishes.dish_category_id', '=', 'dish_categories.id')
-            ->orderBy($sortColumn, $sortOrder)->get(['dishes.*', 'dish_categories.name as category_name']);
-        }else{
-            $dishes = Dish::join('dish_categories', 'dishes.dish_category_id', '=', 'dish_categories.id')
-            ->orderBy('dishes.'.$sortColumn, $sortOrder)->get(['dishes.*', 'dish_categories.name as category_name']);
-        }
+        
+        $dishes = Dish::join('dish_categories', 'dishes.dish_category_id', '=', 'dish_categories.id')
+        ->orderBy($sortColumn, $sortOrder)->get(['dishes.*', 'dish_categories.name as category_name']);
+        
         $dishesWithCategoryName = $dishes->map(function($dish) {
             return [
                 'id' => $dish->id,
