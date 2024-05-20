@@ -21,7 +21,7 @@
     </form>
 </div>
 
-<table class="table table-dark border border-light">
+<table class="table table-striped  table-dark table-bordered">
     <thead>
         <tr>
             <th>ID</th>

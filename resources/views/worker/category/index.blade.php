@@ -30,12 +30,13 @@
 </form>
 
 <a href="{{route('worker.category.add')}}" class="btn btn-primary btn-as-link m-2">Dodaj nową kategorię</a>
-<table id="categoriesTable" class="table table-dark border border-light">
+<table id="categoriesTable" class="table table-striped  table-dark table-bordered">
     <thead>
         <tr>
             <th>ID</th>
             <th>Nazwa</th>
             <th>Data utworzenia</th>
+            <th></th>
             <th></th>
         </tr>
     </thead>

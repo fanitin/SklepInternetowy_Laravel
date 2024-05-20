@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        DishCategory::factory(50)->create();
-        $dishes = Dish::factory(50)->create();
+        DishCategory::factory(15)->create();
+        $dishes = Dish::factory(100)->create();
         User::create([
             'name' => 'admin',
             'email' => 'admin@a.a',
@@ -56,7 +56,6 @@ class DatabaseSeeder extends Seeder
         Status::create([
             'name' => 'anulowane'
         ]);
-        Payment::factory(20)->create();
         $orders = Order::factory(20)->create();
 
         foreach($orders as $order){

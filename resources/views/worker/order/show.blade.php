@@ -6,19 +6,23 @@
 
 @section('main_content')
 <p class="text-white text-center md-3">Dania w zamówieniu #{{$order->id}}</p>
-<form action="{{route('worker.order.changeStatus', $order->id)}}" method="POST">
-    @csrf
-    @method('PATCH')
-    <label for="id_status" class="form-label">Status</label>
-    <br>
-    <select name="status_id" id="id_status">
-        @foreach ($statuses as $status)
-            <option value="{{$status->id}}" {{($status->id == $order->status_id) ? 'selected' : ''}} >{{$status->name}}</option>
-        @endforeach
-    </select>
-    <input type="submit" value="Zmien status" class="btn btn-primary">
-</form>
-<table id="dishesTable" class="table table-dark border border-light">
+<div>
+    <form action="{{route('worker.order.changeStatus', $order->id)}}" method="POST">
+        @csrf
+        @method('PATCH')
+        <label for="id_status" class="form-label">Status</label>
+        <br>
+        <select name="status_id" id="id_status">
+            @foreach ($statuses as $status)
+                <option value="{{$status->id}}" {{($status->id == $order->status_id) ? 'selected' : ''}} >{{$status->name}}</option>
+            @endforeach
+        </select>
+        <input type="submit" value="Zmien status" class="btn btn-primary">
+    </form>
+    <p class="mt-3">Liczba dań w zamówieniu: {{$order->dishes->count()}}</p>
+</div>
+
+<table id="dishesTable" class="table table-striped  table-dark table-bordered">
     <thead>
         <tr>
             <th>ID</th>

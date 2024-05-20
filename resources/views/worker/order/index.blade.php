@@ -32,15 +32,16 @@
     <button type="submit">Sortuj</button>
 </form>
 
-<table id="ordersTable" class="table table-dark border border-light">
+<table id="ordersTable" class="table table-striped  table-dark table-bordered">
     <thead>
         <tr>
             <th>ID</th>
             <th>Adres</th>
             <th>Numer</th>
             <th>Całość</th>
+            <th>Liczba dań</th>
             <th>Data</th>
-            <th>Płatność</th>
+            <th>ID płatności</th>
             <th>Status</th>
             <th>Ostatnio zmienił</th>
         </tr>
@@ -52,6 +53,7 @@
                 <th>{{$order->address}}</th>
                 <th>{{$order->phone}}</th>
                 <th>{{$order->payment->amount}} zł</th>
+                <th>{{$order->dishes->count()}}</th>
                 <th>{{$order->created_at}}</th>
                 <th>{{$order->payment_id}}</th>
                 <th>
@@ -102,6 +104,7 @@
                             <th>${order.address}</th>
                             <th>${order.phone}</th>
                             <th>${order.amount} zł</th>
+                            <th>${order.orderCount}</th>
                             <th>${createdAt}</th>
                             <th>${order.payment_id}</th>
                             <th>${order.status}</th>
@@ -140,6 +143,7 @@
                             <th>${order.address}</th>
                             <th>${order.phone}</th>
                             <th>${order.amount} zł</th>
+                            <th>${order.orderCount}</th>
                             <th>${createdAt}</th>
                             <th>${order.payment_id}</th>
                             <th>${order.status}</th>

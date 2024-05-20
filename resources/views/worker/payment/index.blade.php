@@ -30,7 +30,7 @@
     <button type="submit">Sortuj</button>
 </form>
 
-<table id="paymentsTable" class="table table-dark border border-light">
+<table id="paymentsTable" class="table table-striped  table-dark table-bordered">
     <thead>
         <tr>
             <th>ID</th>
@@ -42,10 +42,10 @@
     <tbody>
         @foreach ($payments as $payment)
             <tr>
-                <td>{{$payment->id}}</td>
+                <td><a href="{{route('worker.order.show', $payment->order->id)}}" class="btn btn-primary btn-as-link">{{$payment->id}}</a></td>
                 <td>{{$payment->service}}</td>
                 <td>{{$payment->created_at}}</td>
-                <td>{{$payment->amount}}</td>
+                <td>{{$payment->amount}} zł</td>
             </tr>
         @endforeach
     </tbody>
@@ -78,10 +78,10 @@
                         });
                         $('#paymentsTable tbody').append(`
                         <tr>
-                            <td>${payment.id}</td>
+                            <td><a href="/worker/order/${payment.order_id}/show" class="btn btn-primary btn-as-link">${payment.id}</a></td>
                             <td>${payment.service}</td>
                             <td>${createdAt}</td>
-                            <td>${payment.amount}</td>
+                            <td>${payment.amount}  zł</td>
                         </tr>
                         `);
                     });
@@ -112,10 +112,10 @@
                         });
                         $('#paymentsTable tbody').append(`
                         <tr>
-                            <td>${payment.id}</td>
+                            <td><a href="/worker/order/${payment.order_id}/show" class="btn btn-primary btn-as-link">${payment.id}</a></td>
                             <td>${payment.service}</td>
                             <td>${createdAt}</td>
-                            <td>${payment.amount}</td>
+                            <td>${payment.amount}  zł</td>
                         </tr>
                         `);
                     });

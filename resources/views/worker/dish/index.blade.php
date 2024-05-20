@@ -34,7 +34,7 @@
 </form>
 
 <a href="{{route('worker.dish.add')}}" class="btn btn-primary btn-as-link m-2">Dodaj nowe danie</a>
-<table id="dishesTable" class="table table-dark border border-light">
+<table id="dishesTable" class="table table-striped  table-dark table-bordered">
     <thead>
         <tr>
             <th>ID</th>

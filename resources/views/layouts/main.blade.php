@@ -12,12 +12,20 @@
     <header class="d-flex flex-wrap align-items-center justify-content-between justify-content-md-between py-3 mb-4 border-bottom bg-dark">
     <ul class="nav col-12 col-md-auto mb-2 justify-content-start mb-md-0">
         <li> <a href="{{route('home.index')}}" class="nav-link px-2 link-secondary text-white">Strona główna</a></li>
-        <li class="nav-link px-2 link-dark text-white">Oblicz</li>
-        <li class="nav-link px-2 link-dark text-white">Poprzednie wyniki</li>
+        <li><a href="" class="nav-link px-2 link-secondary text-white">Menu</a></li>
+        <li><a href="" class="nav-link px-2 link-secondary text-white">Kontakt</a></li>
     </ul>
 
-    <div class="col-md-3 text-end ms-auto">
-        <div class="dropdown">
+    <div class="d-flex align-items-center ms-auto">
+        <div class="me-3 d-flex align-items-center ms-auto">
+            <a href="{{route('worker.index')}}" class="nav-link px-2 link-dark text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-cart" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                </svg>
+                <span class="badge rounded-pill bg-light text-dark">{{$cartCount}}</span>
+            </a>
+        </div>
+        <div class="dropdown" width="100px">
             @guest
                 @if (Route::has('login'))
                     <button class="btn btn-warning btn-as-link" onclick="window.location.href='{{ route('login') }}'">{{ __('Login') }}</button>

@@ -23,5 +23,6 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFive();
         view()->composer(['admin.*', 'includes.adminSidebar'], AdminPanelComposer::class);
         view()->composer(['worker.*','includes.workerSidebar'], WorkerPanelComposer::class);
+        view()->composer(['layouts.main'], MainPageComposer::class);
     }
 }

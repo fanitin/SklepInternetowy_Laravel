@@ -32,7 +32,8 @@ class Service{
                 'created_at' => $order->created_at,
                 'payment_id' => $order->payment_id,
                 'status' => $order->status,
-                'processed_by_user_id' => $order->processed_by_user_id
+                'processed_by_user_id' => $order->processed_by_user_id,
+                'orderCount' => $order->dishes->count()
             ];
         });
         return $ordersWith;
@@ -56,7 +57,8 @@ class Service{
                 'created_at' => $order->created_at,
                 'payment_id' => $order->payment_id,
                 'status' => $order->status,
-                'processed_by_user_id' => $order->processed_by_user_id
+                'processed_by_user_id' => $order->processed_by_user_id,
+                'orderCount' => $order->dishes->count()
             ];
         });
         return $ordersWith;

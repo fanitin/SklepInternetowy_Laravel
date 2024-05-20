@@ -20,12 +20,12 @@ class OrderFactory extends Factory
      */
     public function definition(): array
     {
-
+        $payment = Payment::factory()->create();
         return [
             'address' => fake()->address(),
             'phone' => fake()->regexify('/^\+48[0-9]{9}$/'),
             'user_id' => User::get()->random()->id,
-            'payment_id' => Payment::get()->random()->id,
+            'payment_id' => $payment->id,
             'status_id' => Status::get()->random()->id
         ];
     }
