@@ -14,6 +14,18 @@ Route::namespace("App\Http\Controllers\Home")->name('home.')->group(function () 
 });
 
 
+Route::namespace("App\Http\Controllers\Menu")->prefix('menu')->name('menu.')->group(function () {
+    Route::get('/', 'IndexController')->name('index');
+    Route::get('/{category}', 'CategoryController')->name('category');
+});
+
+
+Route::namespace('App\Http\Controllers\Cart')->prefix('cart')->name('cart.')->group(function () {
+    Route::post('/add', 'AddController')->name('add');
+    Route::get('/','IndexCOntroller')->name('index');
+});
+
+
 Route::middleware(AdminPanelMiddleware::class)->namespace("App\Http\Controllers\Admin")->prefix('admin')->name('admin.')->group(function () {
     Route::get('/home', 'IndexController')->name('index');
 });

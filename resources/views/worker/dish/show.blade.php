@@ -5,7 +5,7 @@
 @endsection
 
 @section('main_content')
-    <div class="col" style="max-width: 360px; max-height: 360px;">
+    <div class="col mx-auto" style="max-width: 360px; max-height: 360px;">
         <div class="card shadow-sm">
             <div class="card-header text-center">{{$dish->name}}</div>
             <img src="{{ asset($dish->image) }}" class="card-img-top img-center" alt="{{$dish->name}}" style="max-width: 360px; max-height: 360px;">
@@ -24,10 +24,14 @@
                         </form>
                         <p class="text-body-footer">ID: {{$dish->id}}</p>
                     </div>
-                    <small class="text-body-secondary">{{$dish->price}} zł</small>
                     <div>
+                        <div>
+                            <small class="text-body-secondary">Cena: {{$dish->price}} zł</small>
+                        </div>
                         @if ($dish->weight != null)
-                            <small class="text-body-secondary">{{$dish->weight}} g</small>
+                            <div>
+                                <small class="text-body-secondary">Waga: {{$dish->weight}} g</small>
+                            </div>
                         @endif
                     </div>
                 </div>

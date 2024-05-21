@@ -13,4 +13,13 @@ class DishCategory extends Model
     public function dishes(){
         return $this->hasMany(Dish::class);
     }
+
+    public function firstDish(){
+        return $this->dishes()->first();
+    }
+
+
+    public function getRouteKeyName(){
+        return 'name';
+    }
 }
