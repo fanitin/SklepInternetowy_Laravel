@@ -2,7 +2,6 @@
 namespace App\Http\Controllers\Worker\Dish;
 
 
-use App\Http\Controllers\Controller;
 use App\Models\Dish;
 use App\Models\DishCategory;
 use Illuminate\Http\Request;

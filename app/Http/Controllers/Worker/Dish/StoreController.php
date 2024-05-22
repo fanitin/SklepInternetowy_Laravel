@@ -18,7 +18,7 @@ class StoreController extends BaseController{
         ]);
 
         $this->service->store($data, $request);
-
+        
         return redirect()->route('worker.dish.index');
     }
 

@@ -16,8 +16,7 @@ class Service{
             return $e->getMessage();
         }
 
-        $dish = Dish::create($data);
-        return $dish;
+        Dish::create($data);
     }
 
     public function edit($dish, $data, $request){

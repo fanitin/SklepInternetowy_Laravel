@@ -7,7 +7,7 @@ use App\Models\DishCategory;
 
 class IndexController extends Controller{
     public function __invoke(){
-        $categories = DishCategory::all();
-        return view('worker.category.index', ['categories'=> $categories]);
+        $dishCategories = DishCategory::all();
+        return view('worker.category.index', ['dishCategories'=> $dishCategories]);
     }
 }

@@ -41,18 +41,18 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($categories as $category)
+        @foreach ($dishCategories as $dishCategory)
             <tr>
-                <td>{{$category->id}}</td>
-                <td>{{$category->name}}</td>
-                <td>{{$category->created_at}}</td>
-                <td><form action="{{route('worker.category.destroy', $category->id)}}" method="POST">
+                <td>{{$dishCategory->id}}</td>
+                <td>{{$dishCategory->name}}</td>
+                <td>{{$dishCategory->created_at}}</td>
+                <td><form action="{{route('worker.category.destroy', $dishCategory->id)}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <input type="submit" class="btn btn-danger" value="Usuń">
                 </form></td>
                 <td>
-                    <button class="btn btn-warning"><a class="text-white" href="{{route('worker.category.send', $category->id)}}">Edytuj</a></button>
+                    <button class="btn btn-warning"><a class="text-white" href="{{route('worker.category.send', $dishCategory->id)}}">Edytuj</a></button>
                 </td>
             </tr>
         @endforeach
@@ -75,8 +75,8 @@
                 data: formData,
                 success: function(response) {
                     $('#categoriesTable tbody').empty();
-                    response.forEach(function(category) {
-                        let createdAt = new Date(category.created_at).toLocaleString('pl-PL', {
+                    response.forEach(function(dishCategory) {
+                        let createdAt = new Date(dishCategory.created_at).toLocaleString('pl-PL', {
                             year: 'numeric',
                             month: '2-digit',
                             day: '2-digit',
@@ -86,18 +86,18 @@
                         });
                         $('#categoriesTable tbody').append(`
                             <tr>
-                                <td>${category.id}</td>
-                                <td>${category.name}</td>
+                                <td>${dishCategory.id}</td>
+                                <td>${dishCategory.name}</td>
                                 <td>${createdAt}</td>
                                 <td>
-                                    <form method="POST" action="/worker/category/${category.id}/delete">
+                                    <form method="POST" action="/worker/category/${dishCategory.id}/delete">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="${$('meta[name="csrf-token"]').attr('content')}">
                                         <button type="submit" class="btn btn-danger">Usuń</button>
                                     </form>
                                 </td>
                                 <td>
-                                    <button class="btn btn-warning"><a class="text-white" href="worker/category/${category.id}/edit">Edytuj</a></button>
+                                    <button class="btn btn-warning"><a class="text-white" href="worker/category/${dishCategory.id}/edit">Edytuj</a></button>
                                 </td>
                             </tr>
                         `);
@@ -118,8 +118,8 @@
                 data: formData,
                 success: function(response) {
                     $('#categoriesTable tbody').empty();
-                    response.forEach(function(category) {
-                        let createdAt = new Date(category.created_at).toLocaleString('pl-PL', {
+                    response.forEach(function(dishCategory) {
+                        let createdAt = new Date(dishCategory.created_at).toLocaleString('pl-PL', {
                             year: 'numeric',
                             month: '2-digit',
                             day: '2-digit',
@@ -129,18 +129,18 @@
                         });
                         $('#categoriesTable tbody').append(`
                             <tr>
-                                <td>${category.id}</td>
-                                <td>${category.name}</td>
+                                <td>${dishCategory.id}</td>
+                                <td>${dishCategory.name}</td>
                                 <td>${createdAt}</td>
                                 <td>
-                                    <form method="POST" action="/worker/category/${category.id}/delete">
+                                    <form method="POST" action="/worker/category/${dishCategory.id}/delete">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="${$('meta[name="csrf-token"]').attr('content')}">
                                         <button type="submit" class="btn btn-danger">Usuń</button>
                                     </form>
                                 </td>
                                 <td>
-                                    <button class="btn btn-warning"><a class="text-white" href="worker/category/${category.id}/edit">Edytuj</a></button>
+                                    <button class="btn btn-warning"><a class="text-white" href="worker/category/${dishCategory.id}/edit">Edytuj</a></button>
                                 </td>
                             </tr>
                         `);

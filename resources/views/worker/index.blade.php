@@ -24,7 +24,7 @@
         <!-- small box -->
         <div class="small-box bg-success">
           <div class="inner">
-            <h3>{{$categories}}<sup style="font-size: 20px">%</sup></h3>
+            <h3>{{$categories}}</h3>
 
             <p>Kategorie</p>
           </div>

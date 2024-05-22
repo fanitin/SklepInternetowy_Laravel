@@ -39,11 +39,11 @@ Route::middleware(WorkerPanelMiddleware::class)->namespace("App\Http\Controllers
         Route::get('/','IndexController')->name('index');
         Route::post('/search', 'SearchController')->name('search');
         Route::post('/sort', 'SortController')->name('sort');
-        Route::delete('/{dish_category}/delete', 'DeleteController')->name('destroy');
+        Route::delete('/{dishCategory:id}/delete', 'DeleteController')->name('destroy');
         Route::get('/add', 'StoreController@addSender')->name('add');
         Route::post('/store', 'StoreController@store')->name('store');
-        Route::get('/{dish_category}/edit', 'EditController@sender')->name('send');
-        Route::patch('/{dish_category}', 'EditController@edit')->name('edit');
+        Route::get('/{dishCategory:id}/edit', 'SendController')->name('send');
+        Route::patch('/', 'EditController')->name('edit');
     });
 
     Route::namespace('Dish')->prefix('dish')->name('dish.')->group(function () {
