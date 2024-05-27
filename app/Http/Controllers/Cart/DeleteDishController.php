@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Cart;
 
 use App\Http\Controllers\Controller;
-use App\Models\Dish;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller{
+class DeleteDishController extends Controller{
     /**
      * Create a new controller instance.
      *
@@ -19,12 +18,15 @@ class IndexController extends Controller{
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function __invoke(Request $request){
-        $dishes = session()->get("cart", []);
+        $cart = session()->get('cart', []);
+        $id = $request->input('cart_id');
+        unset($cart[$id]);
+        session()->put('cart', $cart);
         $amount = 0;
-        foreach($dishes as $dish){
+        foreach($cart as $dish){
             $amount += $dish->price;
         }
-        $number = count($dishes);
-        return view("cart.index", ["dishes"=> $dishes, "amount"=> $amount, "number"=> $number]);
+        $number = count($cart);
+        return response()->json(['success' => true, 'amount' => $amount, 'number' => $number]);
     }
 }

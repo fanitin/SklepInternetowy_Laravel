@@ -49,6 +49,7 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         var csrfToken = document.querySelector('meta[name="csrf-token"]').content;
         function addToCart(dishId) {
@@ -61,7 +62,13 @@
                 },
                 success: function(response) {
                     $('#cartCount').text(response.cartCount);
-                    alert('Dodano do koszyka');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Dodano do koszyka!',
+                        text: 'Twój produkt został dodany do koszyka.',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Ok'
+                    });
                 },
                 error: function(xhr, status, error) {
                     console.error(error);

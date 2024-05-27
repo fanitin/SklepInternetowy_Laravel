@@ -23,6 +23,9 @@ Route::namespace("App\Http\Controllers\Menu")->prefix('menu')->name('menu.')->gr
 Route::namespace('App\Http\Controllers\Cart')->prefix('cart')->name('cart.')->group(function () {
     Route::post('/add', 'AddController')->name('add');
     Route::get('/','IndexCOntroller')->name('index');
+    Route::get('/deleteAll', 'DeleteAllController')->name('deleteAll');
+    Route::post('/deleteDish', 'DeleteDishController')->name('deleteDish');
+    Route::post('/deleteChosen', 'DeleteChosenController')->name('deleteChosen');
 });
 
 
