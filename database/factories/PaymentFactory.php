@@ -17,7 +17,7 @@ class PaymentFactory extends Factory
     public function definition(): array
     {
         return [
-            'service' => fake()->randomElement(['karta', 'przelew', 'paypal', 'przy odbiorze']),
+            'service' => fake()->randomElement(['karta', 'blik', 'paypal', 'przy odbiorze']),
             'amount' => fake()->numberBetween(50, 1000)
         ];
     }

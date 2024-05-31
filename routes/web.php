@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\AdminPanelMiddleware;
+use App\Http\Middleware\UserMiddleware;
 use App\Http\Middleware\WorkerPanelMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,13 @@ Route::namespace('App\Http\Controllers\Cart')->prefix('cart')->name('cart.')->gr
     Route::get('/deleteAll', 'DeleteAllController')->name('deleteAll');
     Route::post('/deleteDish', 'DeleteDishController')->name('deleteDish');
     Route::post('/deleteChosen', 'DeleteChosenController')->name('deleteChosen');
+});
+
+
+Route::middleware(UserMiddleware::class)->namespace('App\Http\Controllers\Order')->prefix('order')->name('order.')->group(function () {
+    Route::get('/','IndexController')->name('index');
+    Route::post('/pay', 'PayController')->name('pay');
+    Route::post('/make', 'MakeController')->name('make');
 });
 
 

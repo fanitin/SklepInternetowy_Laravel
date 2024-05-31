@@ -51,10 +51,10 @@
     <div>
         <span class="fw-bold text-white" id="totalNumber">Iłość: {{ $number }}</span>
         <br>
-        <span class="fw-bold text-white" id="totalAmount">Całość: {{ $amount }} zł</span>
+        <span class="fw-bold text-white" id="totalAmount" data-amount="{{ $amount }}">Całość: {{ $amount }} zł</span>
     </div>
     <div>
-        <button class="btn btn-primary" onclick="addToCart()">Zamów</button>
+        <a href="{{ route('order.index') }}" class="btn btn-primary btn-as-link" id="orderButton">Zamów</a>
     </div>
 </div>
 
@@ -196,8 +196,8 @@
                 } else {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Ошибка!',
-                        text: 'Что-то пошло не так.',
+                        title: 'Problem!',
+                        text: 'Coś się stało.',
                         showConfirmButton: false,
                         timer: 2000
                     });
@@ -206,8 +206,8 @@
             .catch(error => {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Ошибка!',
-                    text: 'Что-то пошло не так.',
+                    title: 'Problem!',
+                    text: 'Coś się stało.',
                     showConfirmButton: false,
                     timer: 2000
                 });
@@ -224,5 +224,18 @@
         }
     });
 </script>
+<script>
+    document.getElementById('orderButton').addEventListener('click', function(event) {
+        var amount = parseFloat(document.getElementById('totalAmount').getAttribute('data-amount'));
+        if (amount <= 0) {
+            event.preventDefault();
+            Swal.fire({
+                icon: 'warning',
+                title: 'Koszyk jest pusty!',
+                text: 'Dodaj przedmioty do koszyka przed składaniem zamówienia.',
+                showConfirmButton: true
+            });
+        }
+    });
+</script>
 @endsection
-

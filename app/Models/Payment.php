@@ -9,6 +9,7 @@ class Payment extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['service', 'amount'];
     public function order(){
         return $this->hasOne(Order::class);
     }

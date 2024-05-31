@@ -20,30 +20,33 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 @foreach ($dishes as $dish)
-                    <div class="col">
-                        <div class="card shadow-sm h-100">
-                            <img src="{{ asset($dish->image) }}" class="card-img-top img-center" 
-                            alt="{{$dish->name}}" style="object-fit: cover; width: 100%; height: 100%;">
-                            <div class="card-body">
-                                <p class="card-text text-center">{{$dish->dish_ingridients}}</p>
-                                <div class="d-flex justify-content-between align-items-center">
+                @if ($dish->is_active == 1)
+                <div class="col">
+                    <div class="card shadow-sm h-100">
+                        <img src="{{ asset($dish->image) }}" class="card-img-top img-center" 
+                        alt="{{$dish->name}}" style="object-fit: cover; width: 100%; height: 360px;">
+                        <div class="card-body">
+                            <p class="card-text text-center fw-bold">{{$dish->name}}</p>
+                            <p class="card-text text-center text-muted">{{$dish->dish_ingridients}}</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div>
                                     <div>
+                                        <small class="text-body-secondary">Cena: {{$dish->price}} zł</small>
+                                    </div>
+                                    @if ($dish->weight != null)
                                         <div>
-                                            <small class="text-body-secondary">Cena: {{$dish->price}} zł</small>
+                                            <small class="text-body-secondary">Waga: {{$dish->weight}} g</small>
                                         </div>
-                                        @if ($dish->weight != null)
-                                            <div>
-                                                <small class="text-body-secondary">Waga: {{$dish->weight}} g</small>
-                                            </div>
-                                        @endif
-                                    </div>
-                                    <div class="btn-group">
-                                        <button type="button" onclick="addToCart({{ $dish->id }})" class="btn btn-sm btn-secondary">Dodaj do koszyka</button>
-                                    </div>
+                                    @endif
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button" onclick="addToCart({{ $dish->id }})" class="btn btn-sm btn-secondary">Dodaj do koszyka</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                @endif
                 @endforeach
             </div>
         </div>
