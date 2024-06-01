@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 
+Route::get('/contact', 'App\Http\Controllers\Contact\IndexController')->name('contact.index');
+
+
 Route::namespace("App\Http\Controllers\Home")->name('home.')->group(function () {
     Route::get('/', 'IndexController');
     Route::get('/home', 'IndexController')->name('index');

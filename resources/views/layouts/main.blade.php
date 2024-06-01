@@ -14,7 +14,7 @@
     <ul class="nav col-12 col-md-auto mb-2 justify-content-start mb-md-0">
         <li> <a href="{{route('home.index')}}" class="nav-link px-2 link-secondary text-white">Strona główna</a></li>
         <li><a href="{{route('menu.index')}}" class="nav-link px-2 link-secondary text-white">Menu</a></li>
-        <li><a href="" class="nav-link px-2 link-secondary text-white">Kontakt</a></li>
+        <li><a href="{{route('contact.index')}}" class="nav-link px-2 link-secondary text-white">Kontakt</a></li>
     </ul>
 
     <div class="d-flex align-items-center ms-auto">
