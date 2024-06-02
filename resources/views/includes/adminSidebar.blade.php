@@ -13,7 +13,7 @@
           <img src="{{asset('adm/dist/img/adminlogo.png')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{$user->name}}</a>
+          <a href="#" class="d-block">{{$userMe->name}}</a>
         </div>
       </div>
 
@@ -34,9 +34,9 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-header">EXAMPLES</li>
+          <li class="nav-header">Panele</li>
           <li class="nav-item">
-            <a href="/" class="nav-link">
+            <a href="{{route('admin.user.index')}}" class="nav-link">
               <i class="nav-icon fa fa-sharp fa-solid fa-list"></i>
               <p>
                 Users

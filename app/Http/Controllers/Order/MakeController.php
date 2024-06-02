@@ -43,6 +43,6 @@ class MakeController extends Controller
 
         session()->forget('dane');
         session()->forget('cart');
-        return view("home.index");
+        return redirect()->route("home.index");
     }
 }

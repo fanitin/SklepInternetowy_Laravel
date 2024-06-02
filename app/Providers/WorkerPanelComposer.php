@@ -19,6 +19,6 @@ class WorkerPanelComposer{
         $view->with('dishesPanelCount', Dish::all()->count());
         $view->with('ordersPanelCount', Order::all()->count());
         $view->with('paymentsPanelCount', Payment::all()->count());
-        $view->with('user', Auth::user());
+        $view->with('userMe', Auth::user());
     }
 }

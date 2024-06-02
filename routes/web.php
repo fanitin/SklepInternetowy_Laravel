@@ -42,6 +42,14 @@ Route::middleware(UserMiddleware::class)->namespace('App\Http\Controllers\Order'
 
 Route::middleware(AdminPanelMiddleware::class)->namespace("App\Http\Controllers\Admin")->prefix('admin')->name('admin.')->group(function () {
     Route::get('/home', 'IndexController')->name('index');
+
+    Route::namespace('User')->prefix('user')->name('user.')->group(function () {
+        Route::get('/', 'IndexController')->name('index');
+        Route::post('/search', 'SearchController')->name('search');
+        Route::post('/sort', 'SortController')->name('sort');
+        Route::get('/{user}/show', 'ShowController')->name('show');
+        Route::post('/{user}/edit', 'EditController')->name('edit');
+    });
 });
 
 

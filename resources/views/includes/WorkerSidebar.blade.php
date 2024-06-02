@@ -13,7 +13,7 @@
           <img src="{{asset('adm/dist/img/workerlogo.png')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="{{route('worker.profile')}}" class="d-block">{{$user->name}}</a>
+          <a href="{{route('worker.profile')}}" class="d-block">{{$userMe->name}}</a>
         </div>
       </div>
 

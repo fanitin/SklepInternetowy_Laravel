@@ -98,6 +98,7 @@
                             minute: '2-digit',
                             second: '2-digit'
                         });
+                        let processedBy = order.processed_by_user_id ? order.processed_by_user_id : '';
                         $('#ordersTable tbody').append(`
                         <tr>
                             <td><a href="worker/order/${order.id}/show" class="btn btn-primary btn-as-link">${order.id}</a></td>
@@ -108,7 +109,7 @@
                             <th>${createdAt}</th>
                             <th>${order.payment_id}</th>
                             <th>${order.status}</th>
-                            <th>ID: ${order.processed_by_user_id}</th>
+                            <th>ID: ${processedBy}</th>
                         </tr>
                         `);
                     });
@@ -137,6 +138,7 @@
                             minute: '2-digit',
                             second: '2-digit'
                         });
+                        let processedBy = order.processed_by_user_id ? order.processed_by_user_id : '';
                         $('#ordersTable tbody').append(`
                         <tr>
                             <td><a href="worker/order/${order.id}/show" class="btn btn-primary btn-as-link">${order.id}</a></td>
@@ -147,7 +149,7 @@
                             <th>${createdAt}</th>
                             <th>${order.payment_id}</th>
                             <th>${order.status}</th>
-                            <th>ID: ${order.processed_by_user_id}</th>
+                            <th>ID: ${processedBy}</th>
                         </tr>
                         `);
                     });

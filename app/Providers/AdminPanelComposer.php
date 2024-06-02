@@ -13,6 +13,6 @@ class AdminPanelComposer{
      */
     public function compose(View $view): void{
         $view->with('usersPanelCount', User::all()->count());
-        $view->with('user', Auth::user());
+        $view->with('userMe', Auth::user());
     }
 }
