@@ -47,6 +47,7 @@
                     @if (Auth::user()->hasRole(['worker']))
                         <a href="{{ route('worker.index') }}" class="dropdown-item">Worker panel</a>
                     @endif
+                    <a href="{{route('profile.index')}} " class="dropdown-item">Profil</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">

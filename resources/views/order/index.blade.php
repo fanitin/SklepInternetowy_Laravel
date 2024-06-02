@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,15 +14,31 @@
             border-radius: 5px;
             margin-bottom: 15px;
         }
+        .product {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .product img {
+            width: 80px; /* увеличиваем размер фото */
+            height: 80px;
+            margin-right: 20px; /* увеличиваем отступ */
+            border-radius: 5px;
+        }
+        .product-details {
+            flex-grow: 1; /* растягиваем контейнер с деталями на всю доступную ширину */
+        }
+        .product-details p {
+            margin: 5px 0; /* добавляем небольшой отступ сверху и снизу */
+        }
     </style>
 </head>
 <body class="bg-dark">
     <header class="d-flex flex-wrap align-items-center justify-content-between justify-content-md-between py-3 mb-4 border-bottom bg-dark">
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-start mb-md-0">
-        <li> <a href="{{route('home.index')}}" class="nav-link px-2 link-secondary text-white">Strona główna</a></li>
-    </ul>
-</header>
-
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-start mb-md-0">
+            <li> <a href="{{route('home.index')}}" class="nav-link px-2 link-secondary text-white">Strona główna</a></li>
+        </ul>
+    </header>
 
     <div class="container">
         <form action="{{ route('order.pay') }}" method="POST" id="orderForm">
@@ -53,6 +69,18 @@
                                 <option value="przy_odbiorze">Przy odbiorze</option>
                             </select>
                         </div>
+                    </div>
+                    <div class="mb-3 box">
+                        @foreach ($cart as $dish)
+                            <div class="product">
+                                <img src="{{ asset($dish->image) }}" alt="{{ $dish->name }}">
+                                <div class="product-details">
+                                    <p class="fw-bold text-white">{{ $dish->name }}</p>
+                                    <p class="fw-bold text-white">{{ $dish->weight }} g</p>
+                                    <p class="fw-bold text-white">{{ $dish->price }} zł</p>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
         

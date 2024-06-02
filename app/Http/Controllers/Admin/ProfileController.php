@@ -1,11 +1,11 @@
 <?php
-namespace App\Http\Controllers\Worker;
+namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller{
     public function __invoke(){
-        $worker = Auth::user();
-        return view('worker.profile', ['worker'=> $worker]);
+        $admin = Auth::user();
+        return view('admin.profile', ['admin'=> $admin]);
     }
 }

@@ -40,8 +40,16 @@ Route::middleware(UserMiddleware::class)->namespace('App\Http\Controllers\Order'
 });
 
 
+Route::middleware(UserMiddleware::class)->namespace('App\Http\Controllers\Profile')->prefix('profile')->name('profile.')->group(function () {
+    Route::get('/','IndexController')->name('index');
+    Route::get('/{order}/cancelOrder', 'CancelOrderController')->name('cancelOrder');
+});
+
+
 Route::middleware(AdminPanelMiddleware::class)->namespace("App\Http\Controllers\Admin")->prefix('admin')->name('admin.')->group(function () {
     Route::get('/home', 'IndexController')->name('index');
+    Route::get('/profile', 'ProfileController')->name('profile');
+
 
     Route::namespace('User')->prefix('user')->name('user.')->group(function () {
         Route::get('/', 'IndexController')->name('index');
