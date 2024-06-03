@@ -10,11 +10,6 @@
                         <p><strong>Imię:</strong> {{ $user->name }}</p>
                         <p><strong>E-mail:</strong> {{ $user->email }}</p>
                         <p><strong>Profil założono:</strong> {{ $user->created_at }}</p>
-                        <p><strong>Role:</strong> 
-                            @foreach ($user->roles as $role)
-                                {{ $role->name }}        
-                            @endforeach
-                        </p>
                     </div>
                 </div>
             </div>
