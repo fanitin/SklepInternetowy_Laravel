@@ -47,7 +47,7 @@
         <div class="row mb-3">
             <div class="col-12">
                 <label for="id_ingridients" class="form-label">Składniki</label>
-                <input type="text" class="form-control" id="id_ingridients" name="dish_ingridients" value="{{ $dish->ingridients }}">
+                <input type="text" class="form-control" id="id_ingridients" name="dish_ingridients" value="{{ $dish->dish_ingridients }}">
             </div>
         </div>
         <div class="row">

@@ -35,7 +35,7 @@
             <tr>
                 <td>{{$dish->id}}</td>
                 <td><a href="{{route('worker.dish.show', $dish->id)}}" class="btn btn-primary btn-as-link">{{$dish->name}}</a></td>
-                <td>{{$dish->price}}</td>
+                <td>{{$dish->price}} zł</td>
                 <td>{{$dish->created_at}}</td>
             </tr>
         @endforeach

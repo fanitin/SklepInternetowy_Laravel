@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Panel administratora</title>
+  <link rel="icon" href="images/bug.svg">
   <base href="{{asset('/')}}">
 
   <!-- Google Font: Source Sans Pro -->

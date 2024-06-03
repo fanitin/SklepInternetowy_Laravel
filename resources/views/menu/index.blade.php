@@ -47,17 +47,19 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 @foreach ($categories as $category)
-                <div class="col">
-                    <a href="{{ route('menu.category', $category) }}" class="text-decoration-none">
-                        <div class="card shadow-sm">
-                            <img src="{{ asset($category->dishes->first()->image) }}" class="card-img-top img-center" 
-                            alt="{{$category->name}}">
-                            <div class="card-body">
-                                <p class="card-text text-center fs-2">{{$category->name}}</p>
-                            </div>
+                    @if (isset($category->firstDish()->image))
+                        <div class="col">
+                            <a href="{{ route('menu.category', $category) }}" class="text-decoration-none">
+                                <div class="card shadow-sm">
+                                    <img src="{{ asset($category->firstDish()->image) }}" class="card-img-top img-center" 
+                                    alt="{{$category->name}}">
+                                    <div class="card-body">
+                                        <p class="card-text text-center fs-2">{{$category->name}}</p>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
+                    @endif
                 @endforeach
             </div>
         </div>

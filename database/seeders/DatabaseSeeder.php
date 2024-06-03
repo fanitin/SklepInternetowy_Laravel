@@ -20,8 +20,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        DishCategory::factory(15)->create();
-        $dishes = Dish::factory(100)->create();
         User::create([
             'name' => 'admin',
             'email' => 'admin@a.a',
@@ -33,6 +31,9 @@ class DatabaseSeeder extends Seeder
         Role::create([
             'name' => 'worker'
         ]);
+        Role::create([
+            'name' => 'user'
+        ]);
         RoleUser::create([
             'user_id' => 1,
             'role_id' => 1
@@ -40,6 +41,10 @@ class DatabaseSeeder extends Seeder
         RoleUser::create([
             'user_id' => 1,
             'role_id' => 2
+        ]);
+        RoleUser::create([
+            'user_id' => 1,
+            'role_id' => 3
         ]);
         Status::create([
             'name' => 'złożone'
@@ -56,11 +61,14 @@ class DatabaseSeeder extends Seeder
         Status::create([
             'name' => 'anulowane'
         ]);
-        $orders = Order::factory(20)->create();
+        
+        #DishCategory::factory(15)->create();
+        #$dishes = Dish::factory(100)->create();
+        #$orders = Order::factory(20)->create();
 
-        foreach($orders as $order){
-            $dishesIDs = $dishes->random(random_int(1, 10))->pluck('id');
-            $order->dishes()->attach($dishesIDs);
-        }
+        #foreach($orders as $order){
+        #    $dishesIDs = $dishes->random(random_int(1, 10))->pluck('id');
+        #    $order->dishes()->attach($dishesIDs);
+        #}
     }
 }

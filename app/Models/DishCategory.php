@@ -15,7 +15,7 @@ class DishCategory extends Model
     }
 
     public function firstDish(){
-        return $this->dishes()->first();
+        return $this->dishes()->where('is_active', 1)->first();
     }
 
 

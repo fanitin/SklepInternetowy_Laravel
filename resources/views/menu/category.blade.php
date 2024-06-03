@@ -18,10 +18,10 @@
     </section>
     <div class="album py-2 bg-body-dark">
         <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="row justify-content-center row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 @foreach ($dishes as $dish)
                 @if ($dish->is_active == 1)
-                <div class="col">
+                <div class="col d-flex justify-content-center">
                     <div class="card shadow-sm h-100">
                         <img src="{{ asset($dish->image) }}" class="card-img-top img-center" 
                         alt="{{$dish->name}}" style="object-fit: cover; width: 100%; height: 360px;">

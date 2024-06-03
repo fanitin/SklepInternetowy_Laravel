@@ -3,6 +3,7 @@ namespace App\Services\Admin\User;
 
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class Service{
 
@@ -13,7 +14,7 @@ class Service{
         }
         $user->roles()->sync($data);
         $upd = array();
-        $upd['editor_id'] = auth()->user()->id;
+        $upd['editor_id'] = Auth::user()->id;
         $user->update($upd);
         $user->touch();
     }

@@ -6,6 +6,7 @@
     <meta http-equiv="X-PL-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Zamówienie</title>
+    <link rel="icon" href="images/basket3.svg">
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
     <style>
         .box {

@@ -68,7 +68,7 @@
                 <td>{{$user->email}}</td>
                 <td>{{$user->created_at}}</td>
                 <td>{{$user->updated_at}}</td>
-                <td>{{$user->editor_id}}</td>
+                <td>ID: {{$user->editor_id}}</td>
                 <td>@foreach ($user->roles as $role)
                     {{$role->name}}
                 @endforeach</td>
@@ -119,7 +119,7 @@
                         <td>${user.email}</td>
                         <td>${createdAt}</td>
                         <td>${updatedAt}</td>
-                        <td>${editorId}</td>
+                        <td>ID: ${editorId}</td>
                         <td>${roles}</td>
                     </tr>
                 `);

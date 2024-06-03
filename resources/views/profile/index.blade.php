@@ -29,6 +29,7 @@
                                         <th>ID Zamówienia</th>
                                         <th>Data Zamówienia</th>
                                         <th>Status</th>
+                                        <th>Ostatnia zmiana</th>
                                         <th>Anuluj</th>
                                     </tr>
                                 </thead>
@@ -36,9 +37,10 @@
                                     @foreach ($orders as $order)
                                     @if ($order->status_id === 1 || $order->status_id === 2 || $order->status_id === 3) 
                                         <tr>
-                                            <td>{{ $order->id }}</td>
+                                            <td><a href="{{route('profile.order', $order->id)}}" class="btn btn-primary btn-as-link">{{ $order->id }}</a></td>
                                             <td>{{ $order->created_at }}</td>
                                             <td>{{ $order->status->name }}</td>
+                                            <td>{{ $order->updated_at }}</td>
                                             <td><a href="{{route('profile.cancelOrder', $order->id)}}" class="btn btn-danger btn-sm">Anuluj</a></td>
                                         </tr>
                                     @endif
@@ -60,15 +62,17 @@
                                         <th>ID Zamówienia</th>
                                         <th>Data Zamówienia</th>
                                         <th>Status</th>
+                                        <th>Ostatnia zmiana</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($orders as $order)
                                     @if ($order->status_id === 4 || $order->status_id === 5) 
                                         <tr>
-                                            <td>{{ $order->id }}</td>
+                                            <td><a href="{{route('profile.order', $order->id)}}" class="btn btn-primary btn-as-link">{{ $order->id }}</a></td>
                                             <td>{{ $order->created_at }}</td>
                                             <td>{{ $order->status->name }}</td>
+                                            <td>{{ $order->updated_at }}</td>
                                         </tr>
                                     @endif
                                     @endforeach

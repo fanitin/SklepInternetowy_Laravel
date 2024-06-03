@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\DishCategory;
 
 class DeleteController extends Controller{
-    public function __invoke(DishCategory $dish_category){
-        $dish_category->delete();
+    public function __invoke(DishCategory $dishCategory){
+        $dishCategory->delete();
         return redirect()->route('worker.category.index');
     }
 }

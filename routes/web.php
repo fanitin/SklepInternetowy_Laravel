@@ -36,6 +36,7 @@ Route::namespace('App\Http\Controllers\Cart')->prefix('cart')->name('cart.')->gr
 Route::middleware(UserMiddleware::class)->namespace('App\Http\Controllers\Order')->prefix('order')->name('order.')->group(function () {
     Route::get('/','IndexController')->name('index');
     Route::post('/pay', 'PayController')->name('pay');
+    Route::get('/make', 'MakeController')->name('make');
     Route::post('/make', 'MakeController')->name('make');
 });
 
@@ -43,6 +44,7 @@ Route::middleware(UserMiddleware::class)->namespace('App\Http\Controllers\Order'
 Route::middleware(UserMiddleware::class)->namespace('App\Http\Controllers\Profile')->prefix('profile')->name('profile.')->group(function () {
     Route::get('/','IndexController')->name('index');
     Route::get('/{order}/cancelOrder', 'CancelOrderController')->name('cancelOrder');
+    Route::get('/{order}/show', 'ShowController')->name('order');
 });
 
 
