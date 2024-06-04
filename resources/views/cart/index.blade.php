@@ -26,7 +26,7 @@
     </thead>
     <tbody>
         @foreach ($dishes as $key => $dish)
-        <tr>
+        <tr class="h-100">
             <th scope="row">{{ $key + 1 }}</th>
             <td>
                 <input type="checkbox" class="selectedItem" name="selectedItems[]" value="{{ $key }}">
@@ -89,6 +89,7 @@
                             form.closest('tr').remove();
                             updateTotalAmount(data.amount);
                             updateNumberAmount(data.number);
+                            updateCartCount(data.number);
                         });
                     } else {
                         Swal.fire({
@@ -134,6 +135,7 @@
                         document.querySelectorAll('tbody tr').forEach(row => row.remove());
                         updateTotalAmount(data.amount);
                         updateNumberAmount(data.number);
+                        updateCartCount(data.number);
                     });
                 } else {
                     Swal.fire({
@@ -192,6 +194,7 @@
                         selectedItems.forEach(item => item.closest('tr').remove());
                         updateTotalAmount(data.amount);
                         updateNumberAmount(data.number);
+                        updateCartCount(data.number);
                     });
                 } else {
                     Swal.fire({
@@ -214,13 +217,16 @@
             });
         });
 
-
         function updateTotalAmount(amount) {
             document.getElementById('totalAmount').textContent = `Całość: ${amount} zł`;
         }
 
         function updateNumberAmount(number) {
             document.getElementById('totalNumber').textContent = `Ilość: ${number}`;
+        }
+
+        function updateCartCount(count) {
+            document.getElementById('cartCount').textContent = count;
         }
     });
 </script>

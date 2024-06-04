@@ -5,7 +5,6 @@
 @endsection
 
 @section('main_content')
-<p class="text-white text-center md-3">Dania w zamówieniu #{{$order->id}}</p>
 <div>
     <form action="{{route('worker.order.changeStatus', $order->id)}}" method="POST">
         @csrf
