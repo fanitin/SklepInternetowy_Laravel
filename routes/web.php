@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\AdminPanelMiddleware;
+use App\Http\Middleware\OnlyAjaxMiddleware;
 use App\Http\Middleware\UserMiddleware;
 use App\Http\Middleware\WorkerPanelMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -25,11 +26,14 @@ Route::namespace("App\Http\Controllers\Menu")->prefix('menu')->name('menu.')->gr
 
 
 Route::namespace('App\Http\Controllers\Cart')->prefix('cart')->name('cart.')->group(function () {
-    Route::post('/add', 'AddController')->name('add');
     Route::get('/','IndexCOntroller')->name('index');
-    Route::get('/deleteAll', 'DeleteAllController')->name('deleteAll');
-    Route::post('/deleteDish', 'DeleteDishController')->name('deleteDish');
-    Route::post('/deleteChosen', 'DeleteChosenController')->name('deleteChosen');
+    Route::middleware(OnlyAjaxMiddleware::class)->group(function () {
+        Route::post('/add', 'AddController')->name('add');
+        Route::get('/deleteAll', 'DeleteAllController')->name('deleteAll');
+        Route::post('/deleteDish', 'DeleteDishController')->name('deleteDish');
+        Route::post('/deleteChosen', 'DeleteChosenController')->name('deleteChosen');
+    });
+
 });
 
 
