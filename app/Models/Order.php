@@ -21,4 +21,7 @@ class Order extends Model
     public function payment(){
         return $this->belongsTo(Payment::class, 'payment_id');
     }
+    public function processedByUser(){
+        return $this->belongsTo(User::class, 'processed_by_user_id');
+    }
 }

@@ -36,7 +36,7 @@
                                             <td>{{ $order->created_at }}</td>
                                             <td>{{ $order->status->name }}</td>
                                             <td>{{ $order->updated_at }}</td>
-                                            <td><a href="{{route('profile.cancelOrder', $order->id)}}" class="btn btn-danger btn-sm">Anuluj</a></td>
+                                            <td><a href="{{route('profile.cancelOrder', $order->id)}}" class="btn btn-danger btn-sm cancel-order-btn">Anuluj</a></td>
                                         </tr>
                                     @endif
                                     @endforeach
@@ -79,4 +79,32 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cancelButtons = document.querySelectorAll('.cancel-order-btn');
+            cancelButtons.forEach(button => {
+                button.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const url = this.href;
+
+                    Swal.fire({
+                        title: 'Czy na pewno chcesz anulować zamówienie?',
+                        text: "Tej operacji nie można cofnąć!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Tak, anuluj!',
+                        cancelButtonText: 'Nie, zostaw'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = url;
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 @endsection

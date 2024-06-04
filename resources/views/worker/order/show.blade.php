@@ -25,6 +25,7 @@
     <thead>
         <tr>
             <th>ID</th>
+            <th>Zdjęcie</th>
             <th>Nazwa</th>
             <th>Cena</th>
             <th>Is_active</th>
@@ -36,6 +37,7 @@
         @foreach ($dishes as $dish)
             <tr>
                 <td>{{$dish->id}}</td>
+                <td><img src="{{ asset($dish->image) }}" alt="{{ $dish->name }}" style="max-width: 70px"></td>
                 <td><a href="{{route('worker.dish.show', $dish->id)}}" class="btn btn-primary btn-as-link">{{$dish->name}}</a></td>
                 <td>{{$dish->price}}</td>
                 <td class="@if ($dish->is_active == 1)bg-success

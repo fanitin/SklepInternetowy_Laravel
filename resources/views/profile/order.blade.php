@@ -15,7 +15,7 @@
                         <p><strong>Adres Wysyłki:</strong> {{ $order->address }}</p>
                         <p><strong>Numer Telefonu:</strong> {{ $order->phone }}</p>
                         <p><strong>Metoda Płatności:</strong> {{ $order->payment ? $order->payment->service : 'Nieznana' }}</p>
-                        <p><strong>Przetworzone przez:</strong> {{ $order->processed_by_user ? $order->processed_by_user->name : 'Nie przetworzone' }}</p>
+                        <p><strong>Przetworzone przez:</strong> {{ $order->processed_by_user_id ? $order->processedByUser->name.', ID pracownika: '. $order->processed_by_user_id : 'Nie przetworzone' }}</p>
                     </div>
                 </div>
             </div>
@@ -32,18 +32,18 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <th>Zdjęcie</th>
                                         <th>Nazwa</th>
                                         <th>Cena</th>
-                                        <th>Data utworzenia</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($order->dishes as $dish)
                                         <tr>
                                             <td>{{ $dish->id }}</td>
+                                            <td><img src="{{ asset($dish->image) }}" alt="{{ $dish->name }}" style="max-width: 70px"></td>
                                             <td>{{ $dish->name }}</td>
                                             <td>{{ $dish->price }} zł</td>
-                                            <td>{{ $dish->created_at }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
