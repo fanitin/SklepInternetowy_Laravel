@@ -27,12 +27,11 @@ Route::namespace("App\Http\Controllers\Menu")->prefix('menu')->name('menu.')->gr
 
 Route::namespace('App\Http\Controllers\Cart')->prefix('cart')->name('cart.')->group(function () {
     Route::get('/','IndexCOntroller')->name('index');
-    Route::middleware(OnlyAjaxMiddleware::class)->group(function () {
-        Route::post('/add', 'AddController')->name('add');
-        Route::get('/deleteAll', 'DeleteAllController')->name('deleteAll');
-        Route::post('/deleteDish', 'DeleteDishController')->name('deleteDish');
-        Route::post('/deleteChosen', 'DeleteChosenController')->name('deleteChosen');
-    });
+    Route::post('/add', 'AddController')->name('add');
+    Route::get('/deleteAll', 'DeleteAllController')->name('deleteAll');
+    Route::post('/deleteDish', 'DeleteDishController')->name('deleteDish');
+    Route::post('/deleteChosen', 'DeleteChosenController')->name('deleteChosen');
+    
 
 });
 
@@ -101,6 +100,7 @@ Route::middleware(WorkerPanelMiddleware::class)->namespace("App\Http\Controllers
         Route::post('/sort', 'SortController')->name('sort');
         Route::get('/{order}/show', 'ShowController@index')->name('show');
         Route::patch('/{order}', 'ShowController@changeStatus')->name('changeStatus');
+        Route::get('/order/{user}/show', 'ShowUserController')->name('showUser');
     });
 
 

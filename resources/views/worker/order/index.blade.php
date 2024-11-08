@@ -44,6 +44,7 @@
             <th>ID płatności</th>
             <th>Status</th>
             <th>Ostatnio zmienił</th>
+            <th>Użytkownik który zamówił</th>
         </tr>
     </thead>
     <tbody>
@@ -69,6 +70,7 @@
                     </form>
                 </th>
                 <th>ID: {{$order->processed_by_user_id}}</th>
+                <th><a href="{{route('worker.order.showUser', $order->id)}}" class="btn btn-primary btn-as-link">ID: {{$order->user_id}}</a></th>
             </tr>
         @endforeach
     </tbody>

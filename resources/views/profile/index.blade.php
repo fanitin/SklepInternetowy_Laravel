@@ -36,7 +36,9 @@
                                             <td>{{ $order->created_at }}</td>
                                             <td>{{ $order->status->name }}</td>
                                             <td>{{ $order->updated_at }}</td>
-                                            <td><a href="{{route('profile.cancelOrder', $order->id)}}" class="btn btn-danger btn-sm cancel-order-btn">Anuluj</a></td>
+                                            @if ($order->status_id == 1)
+                                                <td><a href="{{route('profile.cancelOrder', $order->id)}}" class="btn btn-danger btn-sm cancel-order-btn">Anuluj</a></td>
+                                            @endif
                                         </tr>
                                     @endif
                                     @endforeach
